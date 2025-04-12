@@ -14,11 +14,12 @@ import {
   BarChart2,
   Wallet,
 } from "lucide-react"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
+import { Footer } from "./components/footer"
+import { YouTubeVideo } from "./components/youtube-video"
 
 export default function ProfileSelector() {
   const router = useRouter()
@@ -35,13 +36,14 @@ export default function ProfileSelector() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* Custom font import */}
       <style jsx global>{`
         @import url('https://fonts.cdnfonts.com/css/blauer-neue');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
         
         h1, h2, h3, h4, h5, h6, .font-blauer {
-          font-family: 'Blauer Neue', sans-serif;
+          font-family: 'Space Grotesk', 'Blauer Neue', sans-serif;
         }
       `}</style>
 
@@ -51,7 +53,9 @@ export default function ProfileSelector() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Shield className="h-8 w-8 text-blue-800" />
-              <span className="text-2xl font-bold tracking-tight font-blauer text-gray-900">SIPRIFI</span>
+              <span className="text-2xl font-bold tracking-tight font-blauer text-gray-900 bg-gradient-to-r from-blue-800 to-blue-500 bg-clip-text text-transparent">
+                SIPRIFI
+              </span>
             </div>
             <nav className="hidden md:flex gap-8">
               <a href="#about" className="text-sm font-medium text-gray-600 hover:text-blue-800 transition-colors">
@@ -66,12 +70,6 @@ export default function ProfileSelector() {
               <a href="#benefits" className="text-sm font-medium text-gray-600 hover:text-blue-800 transition-colors">
                 Benefits
               </a>
-              <a
-                href="#testimonials"
-                className="text-sm font-medium text-gray-600 hover:text-blue-800 transition-colors"
-              >
-                Testimonials
-              </a>
             </nav>
           </div>
         </div>
@@ -79,12 +77,58 @@ export default function ProfileSelector() {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center">
-        <section className="w-full py-16 md:py-24">
+        {/* Video Section - Moved to the top */}
+        <section className="w-full py-12 bg-gradient-to-b from-blue-50 to-white">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="text-center mb-8"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-blauer text-gray-900">
+                <span className="bg-gradient-to-r from-blue-800 to-blue-500 bg-clip-text text-transparent">
+                  Discover SIPRIFI
+                </span>
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                See how our platform is revolutionizing smart contract insurance and protection in the DeFi space
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl"
+            >
+              <YouTubeVideo />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-8 text-center"
+            >
+              <Button
+                className="bg-blue-800 hover:bg-blue-700 text-white rounded-full px-8 py-6 font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                onClick={() => document.getElementById("choose-profile")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                <span className="group-hover:mr-2 transition-all duration-300">Explore Our Platform</span>
+                <ChevronRight className="inline-block ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="choose-profile" className="w-full py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-center mb-12"
             >
               <motion.div
@@ -119,11 +163,11 @@ export default function ProfileSelector() {
                     type: "spring",
                     stiffness: 200,
                   }}
-                  className="relative inline-block text-blue-800"
+                  className="relative inline-block bg-gradient-to-r from-blue-800 to-blue-500 bg-clip-text text-transparent"
                 >
                   SIPRIFI
                   <motion.span
-                    className="absolute -bottom-2 left-0 w-full h-1 bg-blue-800"
+                    className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-800 to-blue-500"
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 0.8, delay: 1 }}
@@ -636,98 +680,6 @@ export default function ProfileSelector() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section id="testimonials" className="w-full py-16 bg-white border-t border-gray-100">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <span className="inline-block bg-blue-50 text-blue-800 px-4 py-1 rounded-md text-sm font-medium mb-4">
-                TESTIMONIALS
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-blauer text-gray-900">What Our Users Say</h2>
-              <p className="text-gray-600 max-w-3xl mx-auto">
-                Hear from the institutions and individuals who have transformed their risk management strategy with
-                SIPRIFI.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 rounded-xl p-8 border border-gray-200"
-              >
-                <div className="flex items-start mb-6">
-                  <div className="flex-shrink-0 mr-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                      <Building2 className="h-6 w-6 text-blue-800" />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 font-blauer">Global Investments Ltd.</h4>
-                    <p className="text-gray-500 text-sm">Financial Institution</p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-600 mb-4">
-                  "SIPRIFI has revolutionized how we manage credit risk. The platform's security, transparency, and
-                  efficiency have significantly improved our operations, reducing settlement times and costs."
-                </blockquote>
-                <p className="text-gray-900 font-medium">Jane Smith, Risk Manager</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 rounded-xl p-8 border border-gray-200"
-              >
-                <div className="flex items-start mb-6">
-                  <div className="flex-shrink-0 mr-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                      <User className="h-6 w-6 text-blue-800" />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-gray-900 font-blauer">Michael Johnson</h4>
-                    <p className="text-gray-500 text-sm">Individual Investor</p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-600 mb-4">
-                  "As an individual investor, I never thought I'd have access to sophisticated instruments like CDS.
-                  SIPRIFI has made it possible with their user-friendly platform and educational resources."
-                </blockquote>
-                <p className="text-gray-900 font-medium">Michael Johnson, Portfolio Manager</p>
-              </motion.div>
-            </div>
-
-            <div className="mt-16 text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-2xl font-bold mb-8 font-blauer text-gray-900">Trusted by Leading Organizations</h3>
-                <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                  <div className="text-gray-400 font-bold text-xl">Goldman Sachs</div>
-                  <div className="text-gray-400 font-bold text-xl">JP Morgan</div>
-                  <div className="text-gray-400 font-bold text-xl">Morgan Stanley</div>
-                  <div className="text-gray-400 font-bold text-xl">BlackRock</div>
-                  <div className="text-gray-400 font-bold text-xl">Citigroup</div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="w-full py-16 bg-blue-50 border-t border-blue-100">
           <div className="container mx-auto px-4">
@@ -766,102 +718,8 @@ export default function ProfileSelector() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full py-12 bg-white border-t border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Shield className="h-6 w-6 text-blue-800" />
-                <span className="text-xl font-bold tracking-tight font-blauer text-gray-900">SIPRIFI</span>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Secure Innovative Platform for Reliable Investment in Financial Instruments
-              </p>
-              <div className="text-sm text-gray-500">© 2025 SIPRIFI. All rights reserved.</div>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-gray-900 mb-4">Solutions</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Credit Default Swaps
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    CDSC (On-Chain)
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Enterprise Solutions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Risk Management
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-gray-900 mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="#about" className="text-gray-600 hover:text-blue-800">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Press
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-gray-900 mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Security
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Compliance
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Añadir el footer con copyright y términos legales */}
+      <Footer />
     </div>
   )
 }
-

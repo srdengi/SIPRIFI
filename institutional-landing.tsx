@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
+import { Footer } from "./components/footer"
 
 export default function InstitutionalLanding() {
   const [scrollY, setScrollY] = useState(0)
@@ -175,22 +176,6 @@ export default function InstitutionalLanding() {
               />
             </svg>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Trusted By Section */}
-      <section className="py-12 bg-gray-50 border-y border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-lg font-medium text-gray-600">Trusted by leading financial institutions</h2>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            <div className="text-gray-400 font-bold text-xl">Goldman Sachs</div>
-            <div className="text-gray-400 font-bold text-xl">JP Morgan</div>
-            <div className="text-gray-400 font-bold text-xl">Morgan Stanley</div>
-            <div className="text-gray-400 font-bold text-xl">BlackRock</div>
-            <div className="text-gray-400 font-bold text-xl">Citigroup</div>
-          </div>
         </div>
       </section>
 
@@ -364,101 +349,7 @@ export default function InstitutionalLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white py-12 border-t border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Shield className="h-5 w-5 text-blue-800" />
-                <span className="text-lg font-bold tracking-tight font-blauer text-gray-900">SIPRIFI</span>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Secure Innovative Platform for Reliable Investment in Financial Instruments
-              </p>
-              <div className="text-sm text-gray-500">© 2025 SIPRIFI. All rights reserved.</div>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-gray-900 mb-4">Solutions</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Credit Default Swaps
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    CDSC (On-Chain)
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Enterprise Solutions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Risk Management
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-gray-900 mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Press
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-gray-900 mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Security
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-600 hover:text-blue-800">
-                    Compliance
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
-
